@@ -1,3 +1,8 @@
+"""
+
+初始化
+
+"""
 # 左侧电机
 def LMotor(Dir: bool, Speed: number):
     if Dir == True:
@@ -98,11 +103,6 @@ def LLED(Red2: number, Green2: number, Blue2: number):
     Motor.motor_pulse(6, Red2)
     Motor.motor_pulse(7, Green2)
     Motor.motor_pulse(8, Blue2)
-"""
-
-初始化
-
-"""
 ThreeBlackCounter = 0
 Distance = 0
 SMID = 0
@@ -133,14 +133,16 @@ def on_forever():
     # 判断动作
     if Distance < 50:
         brake()
+        LLED(1023, 0, 0)
+        RLED(1023, 0, 0)
     elif sl2 == True and sr2 == False:
         turn_Left()
-        LLED(1023, 1023, 1023)
+        LLED(0, 1023, 0)
         RLED(0, 0, 0)
         ThreeBlackCounter = 0
     elif sl2 == False and sr2 == True:
         turn_Right()
-        RLED(1023, 1023, 1023)
+        RLED(0, 1023, 0)
         LLED(0, 0, 0)
         ThreeBlackCounter = 0
     elif sl2 == False and sr2 == False:
